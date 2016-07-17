@@ -46,8 +46,13 @@ th {
   text-align: center;
 }
 
+/* sticky footer if not enough content */
 .wrap {
   min-height: calc(100vh - 74.63px);
+}
+
+.boldType {
+  font-weight: bold;
 }
 
 
@@ -121,6 +126,45 @@ article {
   margin-bottom: 10px;
 }
 
+#recipeInput {
+  background-color: #b1e2b4;
+  padding: 5% 0;
+  border-radius: 25px;
+  width: 100%;
+  position: relative;
+  left: 50%;
+  margin-left: -50%;
+  margin-bottom: 3%;
+}
+
+#recipeName {
+  width: 80%;
+  position: relative;
+  left: 50%;
+  margin-left: -40%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}
+
+.weightInput {
+  width: 40%;
+  position: relative;
+  left: 50%;
+  margin-left: -20%;
+  border-radius: 15px;
+  margin-bottom: 2%;
+}
+
+#recipeInput label {
+  display: block;
+  text-align: center;
+}
+
+input[type=text]:focus {
+  outline: none;
+  box-shadow: inset 0 0 5px 1px #fa9757;
+}
+
 
 
 /*************************
@@ -138,10 +182,10 @@ footer {
 /*************************
 COLORS
 
-light greyish lime green  #e3f7e3
-very soft lime green      #b1e2b4
-very dark desaturated red #512a2c
-soft orange               #fa9757
+light greyish lime green      #e3f7e3
+very soft lime green (darker) #b1e2b4
+very dark desaturated red     #512a2c
+soft orange                   #fa9757
 *************************/
 
 body {
