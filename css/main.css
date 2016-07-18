@@ -126,36 +126,40 @@ article {
   margin-bottom: 10px;
 }
 
-#recipeInput {
-  background-color: #b1e2b4;
-  padding: 5% 0;
-  border-radius: 25px;
-  width: 100%;
+.recipeContainer,
+#recipeName,
+.weightInput,
+#recipeSubmit {
   position: relative;
   left: 50%;
+  border-radius: 15px;
+  border: none;
+}
+
+.recipeContainer {
+  background-color: #b1e2b4;
+  padding: 5% 0;
+  width: 100%;
   margin-left: -50%;
   margin-bottom: 3%;
 }
 
 #recipeName {
   width: 80%;
-  position: relative;
-  left: 50%;
   margin-left: -40%;
   border-radius: 15px;
   margin-bottom: 5%;
+  text-align: center;
 }
 
 .weightInput {
   width: 40%;
-  position: relative;
-  left: 50%;
   margin-left: -20%;
-  border-radius: 15px;
   margin-bottom: 2%;
+  text-align: center;
 }
 
-#recipeInput label {
+.recipeContainer label {
   display: block;
   text-align: center;
 }
@@ -163,6 +167,30 @@ article {
 input[type=text]:focus {
   outline: none;
   box-shadow: inset 0 0 5px 1px #fa9757;
+}
+
+#recipeSubmit {
+  display: block;
+  margin-top: 5%;
+  width: 35%;
+  margin-left: -17.5%;
+  margin-bottom: 2%;
+  outline: none;
+  transition: transform .5s;
+}
+
+#recipeSubmit:hover {
+  transform: scale(1.1);
+}
+
+.convertedRecipeList {
+  list-style: none;
+  text-align: center;
+  margin: 0 20% 5%;
+  padding: 5% 0;
+  background-color: #e3f7e3;
+  border-radius: 15px;
+
 }
 
 

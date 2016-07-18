@@ -17,9 +17,9 @@
       </div>
       <h1>Convert Your Dough Recipe to Baker's Percentage</h1>
     </header>
-    <article>
+    <article id="content">
       <p>Use the fields below to name your recipe and enter in the weight measurements of each ingredient. As long as the unit of measurement for each ingredient is the same (i.e. all in grams), your recipe will be sucessfully converted to baker's percentage. Your converted recipe will be displayed below.</p>
-      <div id="recipeInput">
+      <div class="recipeContainer">
         <label for="recipeName" class="boldType">Name of Recipe:</label>
         <input type="text" id="recipeName">
         <label for="flourWeight">Weight of Flour:</label>
@@ -32,8 +32,9 @@
         <input type="text" id="starterWeight" class="weightInput">
         <label for="oilWeight">Weight of Oil:</label>
         <input type="text" id="oilWeight" class="weightInput">
+        <button type="button" id="recipeSubmit">Convert!</button>
       </div>
-      <div class="backToTop">
+      <div class="backToTop" id="backTop">
         <a href="#logo">Back to Top</a>
       </div>
     </article>
@@ -41,5 +42,6 @@
     <footer>
       <p>&copy; 2016 Nathan Hugon.<br><a href="mailto:kneadandproof@gmail.com">kneadandproof@gmail.com</a></p>
     </footer>
+    <script src="js/recipeMaker.js"></script>
   </body>
   </html>
