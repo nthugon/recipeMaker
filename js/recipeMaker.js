@@ -5,12 +5,51 @@ var saltInput = document.getElementById("saltWeight");
 var starterInput = document.getElementById("starterWeight");
 var oilInput = document.getElementById("oilWeight");
 var convertButton = document.getElementById("recipeSubmit");
+var placeHolder = document.getElementById("placeHolder");
 
+//find percentage of flour's weight for a given ingredient
 var getBakersPercent = function(ingWeight, flourWeight) {
-  return Math.round((ingWeight / flourWeight) * 100); 
+  return Math.round(((ingWeight / flourWeight) * 100) * 10) / 10;
 }
 
+//check to see if browser supports localStorage
+var supportsLocalStorage = function() {
+  try {
+    return "localStorage" in window && window["localStorage"] !== null;
+  } catch (e) {
+    return false;
+  }
+}
 
+//remove saved recipe from DOM and localStorage
+var deleteRecipe = function() {
+  //delete recipe from DOM
+  var recipeToDelete = this.parentNode;
+  var containerDiv = recipeToDelete.parentNode;
+  containerDiv.removeChild(recipeToDelete);
+  //delete recipe from localStorage
+  if (supportsLocalStorage) {
+  var divToSave = placeHolder.innerHTML;
+  localStorage.setItem("savedDiv", divToSave);
+  };
+}
+
+//bind buttons of tasks to their corresponding functions
+var bindTaskEvents = function(recipe) {
+  var deleteButton = recipe.querySelector("button.deleteButton");
+  //bind deleteRecipe to deleteButton
+  deleteButton.onclick = deleteRecipe;
+}
+
+//cycle through recipes to activate buttons
+var activateButtons  = function(){
+    for(var i = 0; i < placeHolder.children.length; i++) {
+      //bind buttons of tasks to their corresponding functions
+    bindTaskEvents(placeHolder.children[i]);
+  }
+}
+
+//convert inputed ingredient weights and output a recipe
 var createRecipe = function() {
 
   var flour = parseFloat(flourInput.value);
@@ -74,21 +113,49 @@ var createRecipe = function() {
 
   //append ul to div
   convertedRecipe.appendChild(recipeList);
-  //add div to the DOM
-  var backToTop = document.getElementById("backTop");
-  var contentOfPage = document.getElementById("content");
-  contentOfPage.insertBefore(convertedRecipe, backToTop);
+
+  //create delete button
+  var deleteButton = document.createElement("button");
+  deleteButton.innerText = "Delete";
+  //add class to button
+  deleteButton.className = "deleteButton";
+  //append delete button to div
+  convertedRecipe.appendChild(deleteButton);
+
+
+  //append created div to placeHolder div in HTML
+  placeHolder.appendChild(convertedRecipe);
+  //add created div to localStorage
+  if (supportsLocalStorage) {
+  var divToSave = placeHolder.innerHTML;
+  localStorage.setItem("savedDiv", divToSave);
+  };
+
+  //activate buttons on recipes
+  activateButtons();
 
 }
 
+//pull up saved recipes from localStorage
+if ("savedDiv" in localStorage) {
+  placeHolder.innerHTML = localStorage.getItem("savedDiv");
+  activateButtons();
+};
 
-var submitInfo = function(){
-  console.log(nameInput.value);
-  console.log(parseFloat(flourInput.value));
-  console.log(parseFloat(waterInput.value));
-  console.log(parseFloat(saltInput.value));
-  console.log(parseFloat(starterInput.value));
-  console.log(parseFloat(oilInput.value));
-}
-
+//covert and save recipe when convert button is pressed
 convertButton.addEventListener("click", createRecipe);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

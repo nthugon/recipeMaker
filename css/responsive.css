@@ -27,7 +27,8 @@
     font-size: 1.2em;
   }
 
-  #recipeSubmit {
+  #recipeSubmit,
+  .deleteButton {
   width: 20%;
   margin-left: -10%;
   }
