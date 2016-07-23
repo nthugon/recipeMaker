@@ -33,6 +33,10 @@
   margin-left: -10%;
   }
 
+  .recipeContainer {
+    margin-top: 7%;
+  }
+
 }
 
 
@@ -50,6 +54,8 @@
   .recipeContainer {  
   width: 80%;
   margin-left: -40%;
+  padding-bottom: 3%;
+  margin-top: 5%;
   }
 
 }

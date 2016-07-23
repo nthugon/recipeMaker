@@ -1,9 +1,9 @@
 var nameInput = document.getElementById("recipeName");
-var flourInput = document.getElementById("flourWeight");
-var waterInput = document.getElementById("waterWeight");
-var saltInput = document.getElementById("saltWeight");
-var starterInput = document.getElementById("starterWeight");
-var oilInput = document.getElementById("oilWeight");
+var flourInput = document.getElementById("Flour");
+var waterInput = document.getElementById("Water");
+var saltInput = document.getElementById("Salt");
+var starterInput = document.getElementById("Starter");
+var oilInput = document.getElementById("Oil");
 var convertButton = document.getElementById("recipeSubmit");
 var placeHolder = document.getElementById("placeHolder");
 
@@ -44,7 +44,7 @@ var bindTaskEvents = function(recipe) {
 //cycle through recipes to activate buttons
 var activateButtons  = function(){
     for(var i = 0; i < placeHolder.children.length; i++) {
-      //bind buttons of tasks to their corresponding functions
+    //bind button to task
     bindTaskEvents(placeHolder.children[i]);
   }
 }
@@ -52,11 +52,18 @@ var activateButtons  = function(){
 //convert inputed ingredient weights and output a recipe
 var createRecipe = function() {
 
-  var flour = parseFloat(flourInput.value);
-  var water = parseFloat(waterInput.value);
-  var salt = parseFloat(saltInput.value);
-  var starter = parseFloat(starterInput.value);
-  var oil = parseFloat(oilInput.value);
+  //add li to recipe ul containing name and converted weight of ingredient
+  var ingLine = function(ing) {
+    //create li
+    var li = document.createElement("li");
+    //convert ingredient to baker's percentage
+    var convertedIng = getBakersPercent(parseFloat(ing.value), parseFloat(flourInput.value));
+    // var convertedIng = getBakersPercent(ing, flour);
+    //add name and converted number to li
+    li.innerText = ing.id + ": " + convertedIng + "%";
+    //append li to ul
+    recipeList.appendChild(li);
+  }
 
   //create a div for recipe
   var convertedRecipe = document.createElement("div");
@@ -67,50 +74,17 @@ var createRecipe = function() {
   heading.innerText = nameInput.value;
   //add heading as child to div
   convertedRecipe.appendChild(heading);
+
   //add ul
   var recipeList = document.createElement("ul");
   //add class to ul
   recipeList.classList.add("convertedRecipeList");
-
-  //create li for flour
-  var flourListItem = document.createElement("li");
-  //add name and converted number to li
-  flourListItem.innerText = "Flour: 100%";
-  //append li to ul
-  recipeList.appendChild(flourListItem);
-
-  //create li for water
-  var waterListItem = document.createElement("li");
-  //add name and converted number to li
-  var convertedWater = getBakersPercent(water, flour);
-  waterListItem.innerText = "Water: " + convertedWater + "%";
-  //append li to ul
-  recipeList.appendChild(waterListItem);
-
-  //create li for salt
-  var saltListItem = document.createElement("li");
-  //add name and converted number to li
-  var convertedSalt = getBakersPercent(salt, flour);
-  saltListItem.innerText = "Salt: " + convertedSalt + "%";
-  //append li to ul
-  recipeList.appendChild(saltListItem);
-
-  //create li for starter
-  var starterListItem = document.createElement("li");
-  //add name and converted number to li
-  var convertedStarter = getBakersPercent(starter, flour);
-  starterListItem.innerText = "Starter: " + convertedStarter + "%";
-  //append li to ul
-  recipeList.appendChild(starterListItem);
-
-  //create li for oil
-  var oilListItem = document.createElement("li");
-  //add name and converted number to li
-  var convertedOil = getBakersPercent(oil, flour);
-  oilListItem.innerText = "Oil: " + convertedOil + "%";
-  //append li to ul
-  recipeList.appendChild(oilListItem);
-
+  //add li to recipe ul containing name and converted weight of ingredient
+  ingLine(flourInput);
+  ingLine(waterInput);
+  ingLine(saltInput);
+  ingLine(starterInput);
+  ingLine(oilInput);
   //append ul to div
   convertedRecipe.appendChild(recipeList);
 
@@ -122,7 +96,6 @@ var createRecipe = function() {
   //append delete button to div
   convertedRecipe.appendChild(deleteButton);
 
-
   //append created div to placeHolder div in HTML
   placeHolder.appendChild(convertedRecipe);
   //add created div to localStorage
@@ -130,9 +103,15 @@ var createRecipe = function() {
   var divToSave = placeHolder.innerHTML;
   localStorage.setItem("savedDiv", divToSave);
   };
-
   //activate buttons on recipes
   activateButtons();
+  //clear input fields
+  nameInput.value = "";
+  flourInput.value = "";
+  waterInput.value = "";
+  saltInput.value = "";
+  starterInput.value = "";
+  oilInput.value = "";
 
 }
 
