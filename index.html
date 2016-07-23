@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Knead and Proof: Home</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700,' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrap">
+    <header>
+      <div id="logo">
+        <img src="img/logoDark.png" alt="Knead and Proof Logo">
+      </div>
+      <h1>The Art and Science of Sourdough Baking</h1>
+    </header>
+    <article id="content">
+      <h2>Convert Your Dough Recipe to Baker's Percentage</h2>
+      <p>Use the fields below to name your recipe and enter in the weight measurements of each ingredient. As long as the unit of measurement for each ingredient is the same (i.e. all in grams or all in ounces), your recipe will be sucessfully converted to baker's percentage. Your converted recipe will be displayed below.</p>
+      <div class="recipeContainer">
+        <label for="recipeName" class="boldType">Name of Recipe:</label>
+        <input type="text" id="recipeName">
+        <label for="Flour">Weight of Flour:</label>
+        <input type="text" id="Flour" class="weightInput">
+        <label for="Water">Weight of Water:</label>
+        <input type="text" id="Water" class="weightInput">
+        <label for="Salt">Weight of Salt:</label>
+        <input type="text" id="Salt" class="weightInput">
+        <label for="Starter">Weight of Starter:</label>
+        <input type="text" id="Starter" class="weightInput">
+        <label for="Oil">Weight of Oil:</label>
+        <input type="text" id="Oil" class="weightInput">
+        <button type="button" id="recipeSubmit">Convert!</button>
+      </div>
+      <div id="placeHolder">
+      </div>
+      <div class="backToTop" id="backTop">
+        <a href="#logo">Back to Top</a>
+      </div>
+    </article>
+    </div>
+    <footer>
+      <p>&copy; 2016 Nathan Hugon.<br><a href="aboutMe/index.html">About Me</a><br><a href="mailto:kneadandproof@gmail.com">kneadandproof@gmail.com</a></p>
+    </footer>
+    <script src="js/recipeMaker.js"></script>
+  </body>
+  </html>
