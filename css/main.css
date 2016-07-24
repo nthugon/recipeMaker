@@ -126,6 +126,10 @@ article {
   margin-bottom: 2%;
 }
 
+button {
+  -webkit-appearance: none;
+}
+
 .recipeContainer,
 #recipeName,
 .weightInput,
