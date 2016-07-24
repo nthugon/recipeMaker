@@ -177,6 +177,9 @@ input[type=text]:focus {
 
 #recipeSubmit,
 .deleteButton {
+  text-align: center;
+  padding: 0;
+  -webkit-appearance: none;
   display: block;
   margin-top: 3%;
   width: 35%;
