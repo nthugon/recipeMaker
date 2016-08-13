@@ -58,7 +58,6 @@ var createRecipe = function() {
     var li = document.createElement("li");
     //convert ingredient to baker's percentage
     var convertedIng = getBakersPercent(parseFloat(ing.value), parseFloat(flourInput.value));
-    // var convertedIng = getBakersPercent(ing, flour);
     //add name and converted number to li
     li.innerText = ing.id + ": " + convertedIng + "%";
     //append li to ul
@@ -112,7 +111,6 @@ var createRecipe = function() {
   saltInput.value = "";
   starterInput.value = "";
   oilInput.value = "";
-
 }
 
 //pull up saved recipes from localStorage
